@@ -23,7 +23,69 @@
         <child link="base_footprint"/>
         <origin xyz="0.0 0.0 -0.15" rpy="0 0 0"/>
     </joint>
+    <!-- === Livox Mid360 Lidar === -->
+  <joint name="mid360_joint" type="fixed">
+    <parent link="base_link"/>
+    <!-- 位于原雷达位置：前方略微上方 -->
+    <child link="mid360_link"/>
+    <origin xyz="0.0 0 0.122" rpy="0 0 0"/>
+  </joint>
 
+  <link name="mid360_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <!-- 可自行换成实际 mesh 模型 -->
+        <cylinder length="0.05" radius="0.04"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+  <gazebo reference="mid360_link">
+    <sensor type="ray" name="laser_livox">
+            <pose>0 0 0.0 0 0 0</pose>
+            <visualize>true</visualize>
+            <always_on>true</always_on>
+            <update_rate>20</update_rate>
+            <!-- This ray plgin is only for visualization. -->
+            <plugin name="gazebo_ros_laser_controller" filename="liblivox_laser_simulation.so">
+            <ray>
+            <scan>
+              <horizontal>
+                <samples>100</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.1415926535897931</min_angle>
+                <max_angle>3.1415926535897931</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>50</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.1415926535897931</min_angle>
+                <max_angle>3.1415926535897931</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>40</max>
+              <resolution>1</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.0</stddev>
+            </noise>
+            </ray>
+              <visualize>false</visualize>
+              <samples>20000</samples>
+              <downsample>1</downsample>
+              <csv_file_name>mid360-real-centr.csv</csv_file_name>
+              <publish_pointcloud_type>2</publish_pointcloud_type>
+              <ros_topic>/livox/lidar</ros_topic>
+              <frameName>mid360_link</frameName>
+            </plugin>
+        </sensor>
+      <!-- === End Mid360 === -->
+    </gazebo>
     <!-- Base link -->
     <link name="base_link">
         <visual>
