@@ -29,8 +29,8 @@
             <commandTopic>/limo/cmd_vel</commandTopic>
             <torque>500</torque>
             <broadcastTF>false</broadcastTF>
-            <odometryTopic>odom_raw</odometryTopic>
-            <odometryFrame>odom_raw</odometryFrame>
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
             <covariance_x>0.000100</covariance_x>
             <covariance_y>0.000100</covariance_y>
             <covariance_yaw>0.010000</covariance_yaw>
