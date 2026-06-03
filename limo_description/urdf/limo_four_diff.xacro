@@ -110,10 +110,10 @@
                      izz="0.02693" />
         </inertial>
     </link>
-
-    <!-- <xacro:limo_laser parent_prefix="base_link" frame_prefix="laser">
+    
+    <xacro:limo_laser parent_prefix="base_link" frame_prefix="laser">
         <origin xyz="0.103 0 -0.034" rpy="0 0 0"/>
-    </xacro:limo_laser> -->
+    </xacro:limo_laser>
 
     <xacro:limo_depth_camera parent_prefix="base_link" frame_prefix="depth_camera">
         <origin xyz="0.084 0 0.03" rpy="0 0 0"/>
@@ -138,4 +138,69 @@
     <xacro:limo_wheel parent_prefix="base_link" wheel_prefix="rear_right" reflect="-1">
         <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="${M_PI} 0 0" />
     </xacro:limo_wheel>
+
+    <gazebo reference="base_link">
+    <sensor name='collision_sensor' type='contact'>
+      <contact>
+        <collision>base_link_collision</collision>
+      </contact>
+      <plugin name="collision_sensor" filename="libgazebo_collision_sensor.so">
+        <rosDebugLevel>na</rosDebugLevel>
+        <topicName>/gazebo/base_collision</topicName>
+        <updateRate>20.0</updateRate>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="front_left_wheel_link">
+  <sensor name="fl_collision_sensor" type="contact">
+    <contact>
+      <collision>front_left_wheel_link_collision</collision>
+    </contact>
+
+    <plugin name="fl_collision_plugin"
+            filename="libgazebo_collision_sensor.so">
+      <topicName>/gazebo/front_left_collision</topicName>
+      <updateRate>20.0</updateRate>
+    </plugin>
+  </sensor>
+</gazebo>
+<gazebo reference="front_right_wheel_link">
+  <sensor name="fr_collision_sensor" type="contact">
+    <contact>
+      <collision>front_right_wheel_link_collision</collision>
+    </contact>
+
+    <plugin name="fr_collision_plugin"
+            filename="libgazebo_collision_sensor.so">
+      <topicName>/gazebo/front_right_collision</topicName>
+      <updateRate>20.0</updateRate>
+    </plugin>
+  </sensor>
+</gazebo>
+<gazebo reference="rear_left_wheel_link">
+  <sensor name="rl_collision_sensor" type="contact">
+    <contact>
+      <collision>rear_left_wheel_link_collision</collision>
+    </contact>
+
+    <plugin name="rl_collision_plugin"
+            filename="libgazebo_collision_sensor.so">
+      <topicName>/gazebo/rear_left_collision</topicName>
+      <updateRate>20.0</updateRate>
+    </plugin>
+  </sensor>
+</gazebo>
+<gazebo reference="rear_right_wheel_link">
+  <sensor name="rr_collision_sensor" type="contact">
+    <contact>
+      <collision>rear_right_wheel_link_collision</collision>
+    </contact>
+
+    <plugin name="rr_collision_plugin"
+            filename="libgazebo_collision_sensor.so">
+      <topicName>/gazebo/rear_right_collision</topicName>
+      <updateRate>20.0</updateRate>
+    </plugin>
+  </sensor>
+</gazebo>
 </robot>

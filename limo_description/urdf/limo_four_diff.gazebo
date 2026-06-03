@@ -28,7 +28,7 @@
             <robotBaseFrame>base_link</robotBaseFrame>
             <commandTopic>/limo/cmd_vel</commandTopic>
             <torque>500</torque>
-            <broadcastTF>false</broadcastTF>
+            <broadcastTF>true</broadcastTF>
             <odometryTopic>odom</odometryTopic>
             <odometryFrame>odom</odometryFrame>
             <covariance_x>0.000100</covariance_x>
