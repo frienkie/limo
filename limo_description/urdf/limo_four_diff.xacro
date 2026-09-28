@@ -110,17 +110,9 @@
                      izz="0.02693" />
         </inertial>
     </link>
-    
-    <link name="safety_collision_link"> <!-- collision --> 
-    <collision name="safety_collision"> 
-    <origin xyz="0 0 -0.05" rpy="0 0 0"/> 
-    <geometry> <cylinder radius="0.18" length="0.10"/> </geometry> 
-    </collision> <!-- visual --> 
-    <visual name="safety_visual"> <origin xyz="0 0 -0.05" rpy="0 0 0"/> <geometry> 
-    <cylinder radius="0.18" length="0.10"/> </geometry>
-     <material name="transparent_red"/> </visual> <!-- inertia --> <inertial> <origin xyz="0 0 0"/> <mass value="0.001"/> <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/> </inertial> </link> 
+
     <!-- fixed joint --> 
-    <joint name="safety_collision_joint" type="fixed"> <parent link="base_link"/> <child link="safety_collision_link"/> <origin xyz="0 0 0" rpy="0 0 0"/> </joint>
+    <!-- <joint name="safety_collision_joint" type="fixed"> <parent link="base_link"/> <child link="safety_collision_link"/> <origin xyz="0 0 0" rpy="0 0 0"/> </joint> -->
 
     <xacro:limo_laser parent_prefix="base_link" frame_prefix="laser">
         <origin xyz="0.103 0 -0.034" rpy="0 0 0"/>
@@ -150,7 +142,7 @@
         <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="${M_PI} 0 0" />
     </xacro:limo_wheel>
 
-    <!-- <gazebo reference="base_link">
+    <gazebo reference="base_link">
     <sensor name='collision_sensor' type='contact'>
       <contact>
         <collision>base_link_collision</collision>
@@ -161,8 +153,8 @@
         <updateRate>20.0</updateRate>
       </plugin>
     </sensor>
-  </gazebo> -->
-      <gazebo reference="safety_collision_link">
+  </gazebo>
+      <!-- <gazebo reference="safety_collision_link">
     <sensor name='collision_sensor' type='contact'>
       <contact>
         <collision>base_link_fixed_joint_lump__safety_collision_collision_1</collision>
@@ -173,6 +165,6 @@
         <updateRate>20.0</updateRate>
       </plugin>
     </sensor>
-  </gazebo>
+  </gazebo> -->
 
 </robot>
