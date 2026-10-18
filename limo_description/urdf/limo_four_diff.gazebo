@@ -4,8 +4,35 @@
     <xacro:include filename="$(find limo_description)/urdf/limo_gazebo.gazebo" />
 
     <!-- Actuator configurations -->
-    <!-- <xacro:limo_wheel_transmission wheel_prefix="front_right" />
-    <xacro:limo_wheel_transmission wheel_prefix="front_left" /> -->
+
+    <!-- Passive Front Wheels -->
+    <transmission name="front_left_wheel_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+
+        <joint name="front_left_wheel">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+
+        <actuator name="front_left_wheel_actuator">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="front_right_wheel_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+
+        <joint name="front_right_wheel">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+
+        <actuator name="front_right_wheel_actuator">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- Active Rear Wheels -->
     <xacro:limo_wheel_transmission wheel_prefix="rear_left" />
     <xacro:limo_wheel_transmission wheel_prefix="rear_right" />
 
