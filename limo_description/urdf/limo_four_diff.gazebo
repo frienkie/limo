@@ -63,4 +63,23 @@
             <covariance_yaw>0.010000</covariance_yaw>
         </plugin> -->
     </gazebo>
+    <gazebo>
+    <plugin name="gazebo_odometry" filename="libgazebo_ros_p3d.so">
+
+        <robotNamespace>/</robotNamespace>
+
+        <bodyName>base_link</bodyName>
+
+        <topicName>/odom</topicName>
+
+        <frameName>world</frameName>
+
+        <updateRate>100.0</updateRate>
+
+        <gaussianNoise>0.0</gaussianNoise>
+
+        <localTwist>true</localTwist>
+
+    </plugin>
+    </gazebo>
 </robot>
