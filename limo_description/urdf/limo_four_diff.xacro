@@ -166,5 +166,26 @@
       </plugin>
     </sensor>
   </gazebo> -->
+  <!-- Front Left Wheel: Zero Contact Friction -->
+  <gazebo reference="front_left_wheel_link">
+      <mu1>0.05</mu1>
+      <mu2>0.05</mu2>
+  </gazebo>
 
+  <!-- Front Right Wheel: Zero Contact Friction -->
+  <gazebo reference="front_right_wheel_link">
+      <mu1>0.05</mu1>
+      <mu2>0.05</mu2>
+  </gazebo>
+  <!-- Rear Left Wheel: Increased Contact Friction -->
+  <gazebo reference="rear_left_wheel_link">
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+  </gazebo>
+
+  <!-- Rear Right Wheel: Increased Contact Friction -->
+  <gazebo reference="rear_right_wheel_link">
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+  </gazebo>
 </robot>
