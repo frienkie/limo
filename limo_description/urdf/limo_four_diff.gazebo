@@ -68,7 +68,7 @@
 
         <robotNamespace>/</robotNamespace>
 
-        <bodyName>base_link</bodyName>
+        <bodyName>rear_axle_link</bodyName>
 
         <topicName>/odom</topicName>
 

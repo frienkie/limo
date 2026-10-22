@@ -20,6 +20,16 @@
     </material>
     <link name="base_footprint"/>
 
+    <!-- Rear axle center coordinate frame -->
+    <link name="rear_axle_link"/>
+
+    <joint name="rear_axle_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="rear_axle_link"/>
+        <origin xyz="${-wheelbase/2} 0 ${wheel_vertical_offset}"
+                rpy="0 0 0"/>
+    </joint>
+
     <joint name="base_joint" type="fixed">
         <parent link="base_link"/>
         <child link="base_footprint"/>
@@ -168,14 +178,14 @@
   </gazebo> -->
   <!-- Front Left Wheel: Zero Contact Friction -->
   <gazebo reference="front_left_wheel_link">
-      <mu1>0.05</mu1>
-      <mu2>0.05</mu2>
+      <mu1>0.1</mu1>
+      <mu2>0.1</mu2>
   </gazebo>
 
   <!-- Front Right Wheel: Zero Contact Friction -->
   <gazebo reference="front_right_wheel_link">
-      <mu1>0.05</mu1>
-      <mu2>0.05</mu2>
+      <mu1>0.1</mu1>
+      <mu2>0.1</mu2>
   </gazebo>
   <!-- Rear Left Wheel: Increased Contact Friction -->
   <gazebo reference="rear_left_wheel_link">
