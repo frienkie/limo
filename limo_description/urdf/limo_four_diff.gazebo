@@ -63,7 +63,7 @@
 
         <topicName>/odom</topicName>
 
-        <frameName>world</frameName>
+        <frameName>map</frameName>
 
         <updateRate>100.0</updateRate>
 
