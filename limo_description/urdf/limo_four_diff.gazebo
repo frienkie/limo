@@ -42,7 +42,8 @@
     <xacro:gazebo_imu frame_prefix="imu" />
 
     <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+        <!-- Pure PlanarMove mode: bypass gazebo_ros_control and wheel PID control. -->
+        <!-- <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/> -->
 
         <!-- planar_move: 直接设置 base_link 速度，完美跟踪指令 -->
         <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
@@ -50,7 +51,7 @@
             <odometryTopic>/odom_planar</odometryTopic>
             <odometryFrame>odom</odometryFrame>
             <robotBaseFrame>base_link</robotBaseFrame>
-            <odometryRate>100.0</odometryRate>
+            <odometryRate>0.0</odometryRate>
             <publishTF>false</publishTF>
         </plugin>
     </gazebo>
